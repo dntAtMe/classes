@@ -8,11 +8,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Angular-Client';
 
-  ngOnInit() {
-    // Create EventSource
-    const eventSource = new EventSource("/api/messages/events");
-    eventSource.onmessage = (event) => {
-      console.log(event.data);
-    };
-  }
+  ngOnInit() { }
 }
