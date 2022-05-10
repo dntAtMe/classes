@@ -38,6 +38,7 @@ namespace WebAppClasses
             services.AddControllers();
 
             services.AddScoped<IDataRepository<Message>, MessageRepository>();
+            services.AddSingleton<IPublisher<Message>, MessagePublisher>();
             services.AddScoped<IMessageService, MessageService>();
 
             services.AddSwaggerGen(options =>
@@ -49,6 +50,14 @@ namespace WebAppClasses
                     Description = "Application Documentation",
                     Contact = new OpenApiContact { Name = "Author" },
                     License = new OpenApiLicense { Name = "MIT", Url = new Uri("https://en.wikipedia.org/wiki/MIT_License") }
+                });
+            });
+
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(policy =>
+                {
+                    policy.WithOrigins("*").AllowAnyHeader().AllowAnyMethod();
                 });
             });
         }
@@ -68,8 +77,6 @@ namespace WebAppClasses
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
 
             app.UseAuthorization();
@@ -78,6 +85,12 @@ namespace WebAppClasses
             {
                 endpoints.MapControllers();
             });
+
+            app.UseCors(x => x
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .SetIsOriginAllowed(origin => true) 
+                    .AllowCredentials());
         }
     }
 }

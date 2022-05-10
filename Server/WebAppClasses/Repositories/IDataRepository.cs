@@ -8,6 +8,8 @@ namespace WebAppClasses.Repositories
     public interface IDataRepository<T>
     {
         IEnumerable<T> GetAll();
-        void Add(T entity);
+
+        long Count();
+        Message Add(T entity);
     }
 }
