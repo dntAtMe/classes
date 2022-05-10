@@ -8,11 +8,11 @@ namespace WebAppClasses.Db
 {
     public class MessageDbContext: DbContext
     {
-        public MessageDbContext(DbContextOptions<MessageDbContext> options) : base(options)
-        {
+        public MessageDbContext(DbContextOptions<MessageDbContext> options) : base(options) { }
 
-        }
-
+        /**
+        * Tabela z wiadomościami
+        */
         public DbSet<Message> Messages { get; set; } = null;
     }
 }

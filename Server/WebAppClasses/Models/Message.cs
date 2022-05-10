@@ -4,6 +4,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebAppClasses
 {
+    /**
+    * Model wiadomości
+    *
+    * @field Id - klucz główny, generowany automatycznie przez bazę danych
+    */
     public class Message
     {
         [Key]

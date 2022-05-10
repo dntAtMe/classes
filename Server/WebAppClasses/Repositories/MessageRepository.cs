@@ -13,13 +13,20 @@ namespace WebAppClasses.Repositories
 
         public MessageRepository(MessageDbContext dbContext)
         {
-            this._dbContext = dbContext;
+            _dbContext = dbContext;
         }
 
-        public void Add(Message entity)
+        public long Count()
         {
-            _dbContext.Messages.Add(entity);
+            return _dbContext.Messages.Count();
+        }
+
+        public Message Add(Message entity)
+        {
+            var message = _dbContext.Messages.Add(entity);
             _dbContext.SaveChanges();
+
+            return message.Entity;
         }
 
         public IEnumerable<Message> GetAll()
