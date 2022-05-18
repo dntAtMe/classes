@@ -1,7 +1,7 @@
 <h1>Chatbox</h1>
 <div class="chatbox">
   <div *ngFor="let message of messages">
-    <app-chat-message [message]="message"></app-chat-message>
+    <app-chat-message [message]="message" [received]="message.author == userNameService.getUserName()"></app-chat-message>
   </div>
   <app-chat-input></app-chat-input>
 </div>

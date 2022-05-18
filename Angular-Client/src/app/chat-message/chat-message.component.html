@@ -1,3 +1,8 @@
-<div *ngIf="message">
-	<span>{{message.author}}</span> : <span>{{message.content}}</span>
+<div *ngIf="message; else error" [ngClass]="{'received': received, 'sent': !received}">
+  {{message.author}} : {{message.content}}
 </div>
+<ng-template #error>
+	<div>
+		Error
+	</div>
+</ng-template>

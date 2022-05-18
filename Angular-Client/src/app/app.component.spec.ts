@@ -1,5 +1,7 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { UserNameService } from './user-name.service';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
@@ -7,6 +9,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent
       ],
+      providers: [ UserNameService ]
     }).compileComponents();
   });
 
@@ -20,12 +23,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('Angular-Client');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('Angular-Client app is running!');
   });
 });

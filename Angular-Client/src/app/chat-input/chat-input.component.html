@@ -1,5 +1,5 @@
 <form #f="ngForm" (ngSubmit) = "onSubmit(f)">
-  <input type="text" name="author" ngModel required />
-	<input type="text" name="content" placeholder="Type a message..." ngModel required />
+  <label for="content">{{author}}</label>
+	<input id="content" type="text" name="content" placeholder="Type a message..." ngModel required />
   <button type="submit">Send</button>
 </form>

@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Message } from 'src/models/Message';
+import { UserNameService } from '../user-name.service';
 
 @Component({
   selector: 'app-chat-message',
@@ -9,10 +10,12 @@ import { Message } from 'src/models/Message';
 export class ChatMessageComponent implements OnInit {
 
   @Input() message: Message | undefined;
+  @Input() received: boolean | undefined;
 
   constructor() { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+  
   }
 
 }

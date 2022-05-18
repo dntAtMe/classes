@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserNameService } from './user-name.service';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Angular-Client';
 
-  ngOnInit() { }
+  constructor(private userNameService: UserNameService) { }
+
+  ngOnInit() {
+    this.userNameService.setUserName('User ' + Math.floor(Math.random() * 100));
+  }
 }

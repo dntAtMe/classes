@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Injectable, NgZone, OnInit } from '@angular/core';
 import { Observable, Subscriber, Subscription } from 'rxjs';
-import { Message } from 'src/models/Message';
+import { Message } from '../../models/Message';
+import { UserNameService } from '../user-name.service';
 
 @Component({
   selector: 'app-chatbox',
@@ -14,7 +15,7 @@ export class ChatboxComponent implements OnInit {
   messages: Message[] = [];
   subscription: Subscription | undefined;
 
-  constructor(private zone: NgZone, private http: HttpClient) { }
+  constructor(private zone: NgZone, private http: HttpClient, public userNameService: UserNameService) { }
 
   ngOnInit(): void {
     // Create EventSource

@@ -1,4 +1,7 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
+import { UserNameService } from '../user-name.service';
 
 import { ChatInputComponent } from './chat-input.component';
 
@@ -8,7 +11,9 @@ describe('ChatInputComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ChatInputComponent ]
+      declarations: [ ChatInputComponent ],
+      providers: [ UserNameService ],
+      imports: [ HttpClientModule, FormsModule ]
     })
     .compileComponents();
   });
